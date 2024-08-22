@@ -1,25 +1,54 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
-import Form from './components/Form'
-import ChangeInput from './components/ChangeInput';
+import BtnColor from './components/BtnColor';
+import FormChange from './components/FormChange';
 
 function App() {
   
-  const [widthValue, setWidthValue] = useState<number>(80);
-    const [heightValue, setHeightValue] = useState<number>(80);
-    const [marginValue, setMarginValue] = useState<number>(1);
-    const [borderRadiusValue, setBorderRadiusValue] = useState<number>(9)
-    const [colorValue, setColorValue] = useState<string>('gray')
+  const [color,setColor] = useState<number>(1);
+  const [colorString, setColorString] = useState<string>('gray')
+  const [size,setSize] = useState<number>(30);
+  const [borderRadius, setBorderRadius]  = useState<number>(0);
+
+  useEffect(()=>{
+    if(color >= 6){
+      setColor(1);
+    }
+
+    if(size >= 100){
+      setSize(30)
+    }
+
+    if(borderRadius >= 50){
+      setBorderRadius(0)
+    }
+
+    if(color == 1){
+      setColorString('gray')
+    }else if(color == 2){
+      setColorString('blue')
+    }else if(color == 3){
+      setColorString('yellow')
+    }else if(color == 4){
+      setColorString('black')
+    }else if(color == 5){
+      setColorString('cyan')
+    }else if(color == 6){
+      setColorString('red')
+    }
+
+  }, [color, size, borderRadius])
 
   return (
     <div>
-      <div>
-        <ChangeInput 
-          width={widthValue} setWidth={setWidthValue} height={heightValue} setHeight={setHeightValue} margin={marginValue} setMargin={setMarginValue}
-          borderRadius={borderRadiusValue} setBorderRadius={setBorderRadiusValue} color={colorValue} setColor={setColorValue}
-        />
-        <Form width={widthValue} height={heightValue} margin={marginValue} borderRadius={borderRadiusValue} color={colorValue}/>
-      </div>
+      <h1>Teste Mudança de formas no botão</h1>
+      <BtnColor color={color} setColor={setColor} 
+      size={size} setSize={setSize}
+      borderRadius={borderRadius} setBorderRadius={setBorderRadius}/>
+      <FormChange color={colorString} size={size} borderRadius={borderRadius}/>
+      <p>A cor da sua forma é: {colorString.toUpperCase()}</p>
+      <p>O tamanho da sua forma é: {size}</p>
+      <p>O tamanho da seu border radius é: {borderRadius}</p>
     </div>
   )
 }
