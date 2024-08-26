@@ -8,7 +8,7 @@ interface Produto {
     local: string;
 }
 
-function AdicionarItem({setListaProdutos, show, setShow}){
+function AdicionarItem({setListaProdutos, show, setShow }){
 
     const [produto, setProduto] = useState<Produto>();
     
