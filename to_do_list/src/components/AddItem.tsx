@@ -14,17 +14,18 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
     const [description, setDescription] = useState<string>('');
     const [startDate, setStartDate] = useState<string>('01/01/2000');
     const [endDate, setEndDate] = useState<string>('31/12/2100')
-    const [itemValue, setItemValue] = useState<ShapeList>({id: 0, name: '', description: '', startDate: '01/01/2000', endDate: '31/12/2100'});
+    const [itemValue, setItemValue] = useState<ShapeList>({id: 0, name: '', description: '', startDate: '00/00/0000', endDate: '31/12/2100'});
     const [showMenssageFields, setShowMenssageFields] = useState<boolean>(false);
     const [showMenssageDate, setShowMenssageDate] = useState<boolean>(false);
     const [showMenssageSuccess, setShowMenssageSuccess] = useState<boolean>(false);
 
     function IdGenerator(min: number, max: number) : number {
-        let idValue: number = 0
-        do{
+        let idValue: number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        while(list.some(item => item.id == idValue)){
             idValue = Math.floor(Math.random() * (max - min + 1)) + min;
-        }while(!list.some(item => item.id == id))
-        
+        }
+    
         return idValue;
     }
 
@@ -38,29 +39,33 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
     }
 
     function HandleButton(){
-        if(name != '' && description != '' && startDate != '01/01/2000' && endDate != '31/12/2100'){
-            const newList = [...list, itemValue];
+        if(name != '' && description != '' && startDate != '01/12/2000' && endDate != '31/12/2100'){
+            /*const newList = [...list, itemValue];
             setList(newList);
             setShowMenssageSuccess(true)
             setName('');
             setDescription('');
             setStartDate('01/01/2000');
-            setEndDate('31/12/2100');
-            /*
+            setEndDate('31/12/2100');*/
+            
             const startDateValue: number = Date.parse(startDate);
             const endDateValue: number = Date.parse(endDate);
-            if(startDateValue <= endDateValue && startDateValue >= Date.parse('01/01/2000') && endDateValue <= Date.parse('31/12/2100')){
+            alert(startDateValue)
+            alert(endDateValue)
+            if(startDateValue < endDateValue){
+                //setStartDate(DateConversor(startDate));
+                //setEndDate(DateConversor(endDate));
                 const newList = [...list, itemValue];
                 setList(newList);
-                setMenssage('Item added!');
+                setShowMenssageSuccess(true);
                 setName('');
                 setDescription('');
                 setStartDate('01/01/2000');
                 setEndDate('31/12/2100');
             }else{
-                setMenssage('Plaase, provid a start and a end date valid!')
+                setShowMenssageDate(true);
             }
-            */
+            
         }else{ 
             setShowMenssageFields(true)
         }
@@ -72,7 +77,7 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
             name: name,
             description: description,
             startDate: DateConversor(startDate),
-            endDate: DateConversor(endDate)
+            endDate: DateConversor(endDate),
         }
         setId(item.id);
         setItemValue(item);
@@ -99,7 +104,9 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
             <div>
                 <button onClick={HandleButton}>Add item!</button>
                 {
-                    showMenssageSuccess  ? <p>Item added!</p> : ( showMenssageDate ? <p>Please, provite a start and a end date valid!</p> : ( showMenssageFields ? <p>Please, fill the fields!<p/> : null))
+                    showMenssageSuccess  ? <p>Item added!</p> : 
+                    ( showMenssageDate ? <p>Please, provite a start and a end date valid!</p> : 
+                    ( showMenssageFields ? <p>test</p> : null))
                 }
             </div>
         </div>

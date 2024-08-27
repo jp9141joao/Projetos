@@ -60,7 +60,6 @@ function App() {
       {
         showButton && <button onClick={HandleButtonComeBack}>Come back</button>
       }
-       <AddItem list={list} setList={setList}/>
     </div>
   )
 }
