@@ -46,9 +46,9 @@ function App() {
       <h3>To Do List!</h3>
       {
         showPage1 && <>
-                      <ShowList list={list}/>
-                      <button onClick={HandleButtonPage2}>Add chores to list</button>
-                      <button onClick={HandleButtonPage3}>Delete chores to list</button> 
+                      <div><ShowList list={list}/></div>
+                      <div><button onClick={HandleButtonPage2}>Add chores to list</button></div>
+                      <div><button onClick={HandleButtonPage3}>Delete chores to list</button></div>  
                     </>
       }
       {
@@ -58,7 +58,7 @@ function App() {
         showPage3 && <DeleteItem list={list} setList={setList}/>
       }
       {
-        showButton && <button onClick={HandleButtonComeBack}>Come back</button>
+        showButton && <p onClick={HandleButtonComeBack} style={{cursor: 'pointer'}}>Come back</p>
       }
     </div>
   )

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+
 interface ShapeList {
     id: number;
     name: string;
@@ -40,7 +41,7 @@ function DeleteItem({list, setList} : {list : ShapeList[], setList : (value : Sh
         <div>
             <div>
                 {
-                    <ul>
+                    <ul style={{textAlign: 'start'}}>
                         {
                             list.length > 0 ? list.map((e) => (
                                 <li key={e.id}> Id: {e.id} | Name: {e.name} | Description: {e.description} | Start Date: {e.startDate} | End Date: {e.endDate}</li>
@@ -51,10 +52,14 @@ function DeleteItem({list, setList} : {list : ShapeList[], setList : (value : Sh
             </div>
             <div>
                 <label htmlFor="InputId">Type your chore's ID: </label>
+            </div>
+            <div>
                 <input id='InputId' type='number' value={id} onChange={(e) => setId(Number(e.target.value))}/>
             </div>
-            <button onClick={HandleButton}>Delete item</button>
-            <p>{menssage === true ? 'Item deleted!' : (menssage === false ? "Item didn't find!" : null )}</p>
+            <div>
+                <button onClick={HandleButton}>Delete item</button>
+                <p>{menssage === true ? 'Item deleted!' : (menssage === false ? "Item didn't find!" : null )}</p>
+            </div>
         </div>
     )
 }

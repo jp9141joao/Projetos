@@ -50,8 +50,6 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
             
             const startDateValue: number = Date.parse(startDate);
             const endDateValue: number = Date.parse(endDate);
-            alert(startDateValue)
-            alert(endDateValue)
             if(startDateValue < endDateValue){
                 //setStartDate(DateConversor(startDate));
                 //setEndDate(DateConversor(endDate));
@@ -72,14 +70,14 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
     }
 
     useEffect(() => {
+        setId(IdGenerator(1000,9999))
         const item: ShapeList = {
-            id: IdGenerator(1000, 9999),
+            id: id,
             name: name,
             description: description,
             startDate: DateConversor(startDate),
             endDate: DateConversor(endDate),
         }
-        setId(item.id);
         setItemValue(item);
     }, [name, description, startDate, endDate])
 
@@ -87,18 +85,26 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
         <div>
             <div>
                 <label htmlFor="InputName">Type the chore's name: </label>
+            </div>
+            <div>
                 <input id='InputName' type='text' value={name} onChange={(e) => setName(e.target.value)}/>
             </div>
             <div>
                 <label htmlFor="InputDescription">Type the chore's description: </label>
+            </div>
+            <div>
                 <input id='InputDescription' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
             </div>
             <div>
                 <label htmlFor="InputStartDate">Type the chore's start date: </label>
+            </div>
+            <div>
                 <input id='InputStartDate' type='date' value={startDate} onChange={(e) => setStartDate(e.target.value)}/>
             </div>
             <div>
                 <label htmlFor="InputEndDate">Type the chore's end date: </label>
+            </div>
+            <div>
                 <input id='InputEndDate' type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)}/>
             </div>
             <div>
@@ -106,7 +112,7 @@ function AddItem({list, setList} : {list : ShapeList[], setList : (value: ShapeL
                 {
                     showMenssageSuccess  ? <p>Item added!</p> : 
                     ( showMenssageDate ? <p>Please, provite a start and a end date valid!</p> : 
-                    ( showMenssageFields ? <p>test</p> : null))
+                    ( showMenssageFields ? <p>Plase, fill all the fields!</p> : null))
                 }
             </div>
         </div>
