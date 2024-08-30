@@ -1,0 +1,32 @@
+{
+    "profile": [
+        {
+            "id": "1",
+            "picture": "",
+            "name": "Joao Pedro",
+            "subtittle": "Organizer"
+        }
+    ],
+
+    "travelExpense": [
+        {
+            "id": "1",
+            "name": "Transport Airport",
+            "type": "Essential",
+            "date": "12/09/2025",
+            "countryCurrency": 1,
+            "value": 43
+        }
+    ],
+
+    "dailyExpenses": [
+        {
+            "id": 1,
+            "name": "Food",
+            "expenseShared": true,
+            "countryCurrency": 1,
+            "value": 92,
+            "day": 1
+        }
+    ]
+}
