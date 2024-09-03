@@ -1,31 +1,23 @@
 import { useState } from 'react'
 import './App.css'
-import Lista from './components/Lista';
-import AdicionarItem from './components/AdicionarItem';
-
-interface ProdutoLista {
-  idProduto: number;
-  nomeProduto: string;
-  quantidade: number;
-  preco: number;
-  local: string;
-}
+import Header from './components/Header/Header';
+import Button from './components/Buttton/Button';
 
 function App() {
 
-  const [listaProdutosValue, setListaProdutosValue] = useState<ProdutoLista[]>([]);
-  const [showLista, setShowLista] = useState<boolean>(true);
-  const [showAdicionarItem, setShowAdicionarItem] = useState<boolean>(false);
-  const [showMudarItem, setShowMudarItem] = useState<boolean>(false);
-  const [showExcluirItem, setShowExcluirItem] = useState<boolean>(false);
-
+  function handleClick(){
+    alert("Button clicked")
+  }
 
   return (
     <div>
-      <Lista listaProdutos={listaProdutosValue} show={showLista} setShow={setShowLista}/>
-      <AdicionarItem setListaProdutos={setListaProdutosValue} show={showAdicionarItem} setShow={setShowAdicionarItem}/>
+      <Header />
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <Button label="Click Me" onClick={handleClick} />
+      </div>
     </div>
-  )
+  );
+
 }
 
 export default App

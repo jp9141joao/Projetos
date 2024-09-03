@@ -1,7 +1,7 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import './App.css'
 import Home from "./pages/Home";
-import TravelHome from "./pages/TravelHome";
+import TravelHome from "./pages/TravelDetails";
 import EditTravel from "./pages/EditTravel";
 import AddTravel from "./pages/AddTravel";
 
