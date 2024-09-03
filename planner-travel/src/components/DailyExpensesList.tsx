@@ -6,7 +6,7 @@ interface dailyExpenses {
     id: number,
     name: string,
     expenseShared: boolean,
-    countryCurrency: number,
+    countryCurrency: string,
     value: number,
     day: number
 }
@@ -40,8 +40,8 @@ function DailyExpensesList(){
                         <p key={item.id}>
                             Name: {item.name} - 
                             Expense is Shared: {item.expenseShared ? 'Yes' : 'No'} - 
-                            Country Currency: {item.countryCurrency == 1 ? 'American Dollar' : (item.countryCurrency == 2 ? 'Brazilian Real' : (item.countryCurrency == 3 ? 'Mexican Pesos' : (item.countryCurrency == 4 ? 'Pound Sterling' : (item.countryCurrency == 5 ? 'Euro' : (item.countryCurrency == 6 ? 'Canadian Dollar' : null)))))} - Value: {item.countryCurrency == 1 ? 'American Dollar' : (item.countryCurrency == 2 ? 'Brazilian Real' : (item.countryCurrency == 3 ? 'Mexican Pesos' : (item.countryCurrency == 4 ? 'Pound Sterling' : (item.countryCurrency == 5 ? 'Euro' : (item.countryCurrency == 6 ? 'Canadian Dollar' : null)))))} - 
-                            Value: {item.countryCurrency == 1 ? 'American Dollar' : (item.countryCurrency == 2 ? 'Brazilian Real' : (item.countryCurrency == 3 ? 'Mexican Pesos' : (item.countryCurrency == 4 ? 'Pound Sterling' : (item.countryCurrency == 5 ? 'Euro' : (item.countryCurrency == 6 ? 'Canadian Dollar' : null)))))} - Value: {item.countryCurrency == 1 ? '$' : (item.countryCurrency == 2 ? 'R$' : (item.countryCurrency == 3 ? 'MEX$' : (item.countryCurrency == 4 ? '£' : (item.countryCurrency == 5 ? '€' : (item.countryCurrency == 6 ? 'C$' : null)))))}{item.value} -
+                            Country Currency: {item.countryCurrency} - 
+                            Value: {item.countryCurrency == "American Dollar" ? '$' : (item.countryCurrency == "Brazilian Real" ? 'R$' : (item.countryCurrency == "Mexican Peso" ? 'MEX$' : (item.countryCurrency == "Pound Sterling" ? '£' : (item.countryCurrency == "Euro" ? '€' : 'C$'))))}{item.value} -
                             Day: {item.day}
                             <div>
                                 <Link to={`/dailyExpenses/edit/${item.id}`}>Edit data</Link>

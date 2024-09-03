@@ -1,32 +1,47 @@
 {
-    "profile": [
-        {
-            "id": "1",
-            "picture": "",
-            "name": "Joao Pedro",
-            "subtittle": "Organizer"
-        }
-    ],
 
-    "travelExpense": [
-        {
-            "id": "1",
-            "name": "Transport Airport",
-            "type": "Essential",
-            "date": "12/09/2025",
-            "countryCurrency": 1,
-            "value": 43
-        }
-    ],
+  "profile": [
+    {
+      "name": "Joao",
+      "lastName": "Oliveira",
+      "email": "john@gmail.com",
+      "password": "1234"
+    }
+  ],
 
-    "dailyExpenses": [
+  "travel": [
+    {
+      "id": "a136",
+      "name": "Test 4",
+      "days": "1",
+      "dayTravel": [
         {
-            "id": 1,
-            "name": "Food",
-            "expenseShared": true,
-            "countryCurrency": 1,
-            "value": 92,
-            "day": 1
+          "id": "1",
+          "countryCurrency": ["American Dollar"],
+          "value": [0]
         }
-    ]
+      ],
+      "travelExpense": [
+        {
+          "id": "1c10",
+          "name": "Transport Airport",
+          "type": "Essential",
+          "date": "12/09/2025",
+          "countryCurrency": "American Dollar",
+          "value": 43
+        }
+      ],
+
+      "dailyExpense": [
+        {
+          "id": "5446",
+          "name": "Food",
+          "expenseShared": true,
+          "countryCurrency": "American Dollar",
+          "value": 92,
+          "day": 1
+        }
+      ]
+    }
+  ]
 }
